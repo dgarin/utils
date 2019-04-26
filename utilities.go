@@ -42,11 +42,7 @@ func GetIPMAC() (mac string, ip string) {
 		fmt.Printf("ERROR: %s\n", err.Error())
 	}
 
-	name := netInterface.Name
 	macAddress := netInterface.HardwareAddr
-
-	fmt.Println("Hardware name : ", name)
-	fmt.Println("MAC address : ", macAddress)
 
 	hwAddr, err := net.ParseMAC(macAddress.String())
 	if err != nil {
@@ -54,7 +50,6 @@ func GetIPMAC() (mac string, ip string) {
 		os.Exit(-1)
 	}
 
-	fmt.Printf("Physical hardware address : %s \n", hwAddr.String())
 	return hwAddr.String(), probeIP
 
 }
